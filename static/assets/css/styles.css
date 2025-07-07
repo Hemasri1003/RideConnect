@@ -1,0 +1,740 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+  }
+  
+  /* 🔷 SCROLLING TEXT */
+  .scrolling-text {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .scrolling-text::before {
+    content: attr(data-text);
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* 🔷 HEADER */
+  header {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6%;
+  }
+  
+  .logo img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #007BFF;
+  }
+  
+  .btn {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background-color: #007BFF;
+    color: white !important;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .logout-btn {
+    background-color: #dc3545;
+  }
+  
+  .logout-btn:hover {
+    background-color: #a71d2a;
+  }
+  
+  .nav-btn {
+    background-color: #28a745;
+  }
+  
+  .nav-btn:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* 🔷 HERO SECTION */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+  }
+  
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* 🔷 FEATURES SECTION */
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 10%;
+    background-color: #ffffff;
+  }
+  
+  .feature {
+    text-align: center;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  .feature h3 {
+    color: #007BFF;
+    margin-bottom: 10px;
+  }
+  
+  .feature:hover {
+    transform: scale(1.05);
+  }
+  
+  /* 🔷 FOOTER */
+  footer {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 40px 6%;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-column h4 {
+    color: #00bfff;
+    margin-bottom: 15px;
+  }
+  
+  .footer-column p,
+  .footer-column li {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .footer-column a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column a:hover {
+    color: #fff;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #aaa;
+  }
+  
+  /* 🔷 RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .features {
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 5%;
+    }
+  
+    .hero {
+      height: 60vh;
+    }
+  
+    .logo img {
+      width: 100px;
+    }
+  
+    .footer-container {
+      flex-direction: column;
+    }
+  }
+  
+
+  /* 🔷 ABOUT US PAGE STYLES */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container h2 {
+    font-size: 32px;
+    color: #007BFF;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .container h3 {
+    font-size: 24px;
+    color: #0056b3;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .container p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.7;
+  }
+  
+  .container ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  .container ul li {
+    padding-left: 28px;
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .container ul li::before {
+    content: '✔️';
+    position: absolute;
+    left: 0;
+    top: 1px;
+  }
+  
+  .container .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white !important;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .container .btn:hover {
+    background-color: #1e7e34;
+    color: #fff;
+  }
+  
+  /* 🔷 RESPONSIVE - ABOUT US */
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+      margin: 30px 15px;
+    }
+  
+    .container h2 {
+      font-size: 26px;
+    }
+  
+    .container h3 {
+      font-size: 20px;
+    }
+  
+    .container p,
+    .container ul li {
+      font-size: 15px;
+    }
+  }
+  
+  /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* 🔷 SCROLLING TEXT */
+.scrolling-text {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.scrolling-text::before {
+    content: attr(data-text);
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* 🔷 HEADER */
+header {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6%;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #007BFF;
+}
+
+.btn {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background-color: #007BFF;
+    color: white !important;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #a71d2a;
+}
+
+.nav-btn {
+    background-color: #28a745;
+}
+
+.nav-btn:hover {
+    background-color: #1e7e34;
+}
+
+/* 🔷 HERO SECTION */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🔷 FEATURES SECTION */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 10%;
+    background-color: #ffffff;
+}
+
+.feature {
+    text-align: center;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.feature img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+/* 🔷 FOOTER */
+footer {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 40px 6%;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h4 {
+    color: #00bfff;
+    margin-bottom: 15px;
+}
+
+.footer-column p,
+.footer-column li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-column a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* 🔷 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 5%;
+    }
+
+    .hero {
+        height: 60vh;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+}
+
+/* 🔷 ABOUT US PAGE STYLES */
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    font-size: 32px;
+    color: #007BFF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container h3 {
+    font-size: 24px;
+    color: #0056b3;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.container p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.container ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.container ul li {
+    padding-left: 28px;
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.container ul li::before {
+    content: '✔️';
+    position: absolute;
+    left: 0;
+    top: 1px;
+}
+
+.container .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white !important;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.container .btn:hover {
+    background-color: #1e7e34;
+    color: #fff;
+}
+
+/* 🔷 RESPONSIVE - ABOUT US */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 30px 15px;
+    }
+
+    .container h2 {
+        font-size: 26px;
+    }
+
+    .container h3 {
+        font-size: 20px;
+    }
+
+    .container p,
+    .container ul li {
+        font-size: 15px;
+    }
+}
+
+/* 🔷 REGISTER PAGE STYLES */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select,
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+form p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+form a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE - REGISTER */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    form label,
+    form input,
+    form select {
+        font-size: 14px;
+    }
+}
+td {
+  padding: 10px;
+  vertical-align: top;
+}
+img {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}

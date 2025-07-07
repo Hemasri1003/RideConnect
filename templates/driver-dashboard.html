@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Driver Dashboard - Ride Connect</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+</head>
+<body>
+
+    <h2>Available Ride Requests</h2>
+
+    <table border="1">
+        <tr>
+            <th>Pickup</th>
+            <th>Drop</th>
+            <th>Booking Type</th>
+            <th>Vehicle Type</th>
+            <th>Contact</th>
+            <th>Action</th>
+        </tr>
+        {% for ride in ride_requests %}
+        <tr>
+            <td>{{ ride[1] }}</td>
+            <td>{{ ride[2] }}</td>
+            <td>{{ ride[3] }}</td>
+            <td>{{ ride[4] }}</td>
+            <td>{{ ride[5] }}</td>  <!-- Contact details -->
+            <td>
+               <form action="{{ url_for('accepted_user_details') }}" method="POST">
+    <input type="hidden" name="booking_id" value="{{ ride[0] }}">
+    <button type="submit">Accept</button>
+</form>
+
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book a Trip</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+</head>
+<body>
+    <h1>Book a Trip</h1>
+
+    <form id="bookTripForm" action="/book-trip" method="POST">
+        <label for="pickup">Pickup Location:</label>
+        <input type="text" id="pickup" name="pickup_location" placeholder="Enter pickup location" required><br><br>
+    
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="drop_location" placeholder="Enter destination" required><br><br>
+    
+        <label for="bookingType">Booking Type:</label>
+        <select id="bookingType" name="booking_type" onchange="toggleVehicleOptions()">
+            <option value="driver">Driver Only</option>
+            <option value="driver_vehicle">Driver + Vehicle</option>
+        </select><br><br>
+
+        <div id="vehicleOptions">
+            <label for="vehicleType">Vehicle Type:</label>
+            <select id="vehicleType" name="vehicle_type">
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Mini">Mini</option>
+            </select><br><br>
+
+            <label for="num_seats">Number of Seats:</label>
+            <input type="number" id="num_seats" name="num_seats">
+        </div>
+
+        <label for="hours">Trip Duration - Hours:</label>
+        <input type="number" id="hours" name="hours" min="0" value="0"><br><br>
+
+        <label for="minutes">Trip Duration - Minutes:</label>
+        <input type="number" id="minutes" name="minutes" min="0" value="0"><br><br>
+
+        <label for="distance">Distance (in km):</label>
+        <input type="number" id="distance" name="distance" step="0.1" min="0" required><br><br>
+
+        <label for="contact">Contact Details:</label>
+        <input type="text" id="contact" name="contact_details" placeholder="Phone / Email" required><br><br>
+
+        <button type="button" onclick="calculateFare()">Calculate Fare</button>
+        <h2>Final Cost: ₹<span id="fareResult">0</span></h2><br>
+
+        <button type="submit">Book Trip</button>
+    </form>
+
+    <script>
+        function toggleVehicleOptions() {
+            const bookingType = document.getElementById("bookingType").value;
+            const vehicleOptions = document.getElementById("vehicleOptions");
+            const numSeatsInput = document.getElementById("num_seats");
+            const vehicleTypeSelect = document.getElementById("vehicleType");
+
+            if (bookingType === "driver_vehicle") {
+                vehicleOptions.style.display = "block";
+                numSeatsInput.setAttribute("required", "required");
+                vehicleTypeSelect.setAttribute("required", "required");
+            } else {
+                vehicleOptions.style.display = "none";
+                numSeatsInput.removeAttribute("required");
+                vehicleTypeSelect.removeAttribute("required");
+            }
+        }
+
+        function calculateFare() {
+            const hours = parseInt(document.getElementById("hours").value, 10) || 0;
+            const minutes = parseInt(document.getElementById("minutes").value, 10) || 0;
+            const distance = parseFloat(document.getElementById("distance").value) || 0;
+
+            const totalMinutes = hours * 60 + minutes;
+
+            const baseFare = 50;
+            const bookingFee = 20;
+            const additionalFee = 15;
+            const surge = 1.0;
+            const perMinuteCost = 2;
+            const perDistanceCost = 10;
+
+            const fare = baseFare + bookingFee + additionalFee +
+                         surge * ((perMinuteCost * totalMinutes) + (perDistanceCost * distance));
+
+            document.getElementById("fareResult").textContent = fare.toFixed(2);
+        }
+
+        window.onload = toggleVehicleOptions;
+    </script>
+</body>
+</html>

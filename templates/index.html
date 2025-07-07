@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Connect - Book Your Ride</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+    <script src="{{ url_for('static', filename='assets/js/scripts.js') }}" defer></script>
+</head>
+<body>
+
+    <!-- 🔷 SCROLLING TEXT (Discounts/Offers) -->
+    <div class="scrolling-text">
+        🚖 Limited Time Offer: 20% OFF on your first ride! | 💰 Get ₹100 cashback on prepaid bookings! | 🎉 Special Discounts for Group Trips! 
+    </div>
+
+    <!-- 🔷 HEADER -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="/static/assets/images/p2.jpg" alt="Ride Connect">
+            </div>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                {% if "user_id" in session %}
+        <a href="/dashboard" class="btn">Dashboard</a>
+        <a href="/logout" class="btn logout-btn">Logout</a>
+    {% else %}
+        <a href="/login" class="btn login-btn">Login</a>
+        <a href="/register" class="btn">Sign Up</a>
+    {% endif %}
+
+    <a href="/book-trip" class="btn btn-primary nav-btn">Get Started</a>
+            </nav>
+            
+        </div>
+    </header>
+
+   <!-- 🔷 HERO SECTION (Background Video with Text & Button) -->
+<section class="hero">
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline class="hero-video">
+        <source src="/static/assets/videos/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+
+    
+
+    <!-- 🔷 FEATURES SECTION -->
+    <section class="features">
+        <div class="feature">
+            <img src="/static/assets/images/p1.jpg" alt="Find Drivers">
+            <h3>Find Reliable Drivers</h3>
+            <p>Connect directly with experienced drivers for your trips.</p>
+        </div>
+        <div class="feature">
+            <img src="/static/assets/images/p4.jpg" alt="Book Vehicles">
+            <h3>Book Vehicles Easily</h3>
+            <p>Choose the best cars for your comfort and budget.</p>
+        </div>
+    </section>
+
+    <!-- 🔷 FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>About Ride Connect</h4>
+                <p>Ride Connect is your trusted platform to find drivers and vehicles with ease.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about">About us</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p>Email: rideconnect@gmail.com</p>
+                <p>Phone: +91 98765 43210</p>
+            </div>
+        </div>
+        <p class="footer-bottom">© 2025 Ride Connect. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

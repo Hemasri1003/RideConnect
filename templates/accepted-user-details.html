@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Accepted User Details - Ride Connect</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+</head>
+<body>
+    <h2>Accepted Ride - User Details</h2>
+
+    {% if user_info %}
+    <div class="card">
+        <p><strong>Name:</strong> {{ user_info[0] }}</p>
+        <p><strong>Email:</strong> {{ user_info[1] }}</p>
+        <p><strong>Pickup Location:</strong> {{ user_info[4] }}</p>
+        <p><strong>Drop Location:</strong> {{ user_info[5] }}</p>
+        <p><strong>Contact Details:</strong> {{ user_info[6] }}</p>
+
+        {% if user_info[2] %}
+            <p><strong>License Photo:</strong></p>
+            <img src="{{ url_for('static', filename='uploads/' + user_info[2]) }}" width="200">
+        {% endif %}
+
+        {% if user_info[3] %}
+            <p><strong>Vehicle Photo:</strong></p>
+            <img src="{{ url_for('static', filename='uploads/' + user_info[3]) }}" width="200">
+        {% endif %}
+    </div>
+    {% else %}
+    <p style="color:red;">No user data found for this booking.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('driver_dashboard') }}" class="btn">Back to Dashboard</a>
+</body>
+</html>

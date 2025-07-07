@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

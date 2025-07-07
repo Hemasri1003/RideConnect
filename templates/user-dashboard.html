@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('book_trip') }}" class="btn">Book a Trip</a>
+    </div>
+
+    <div class="container">
+        <h2>Your Bookings</h2>
+
+        {% if bookings %}
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Pickup</th>
+                <th>Drop</th>
+                <th>Booking Type</th>
+                <th>Vehicle Type</th>
+                <th>Seats</th>
+                <th>Contacts</th>
+                <th>Booking Time</th>
+                <th>Driver Info</th>
+            </tr>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking[0] }}</td>
+                <td>{{ booking[3] }}</td>
+                <td>{{ booking[4] }}</td>
+                <td>{{ booking[10] }}</td>
+                <td>{{ booking[8] }}</td>
+                <td>{{ booking[12] }}</td>
+                <td>{{ booking[9] }}</td>
+                <td>{{ booking[7] }}</td>
+                <td>
+{% if booking[6] == 'accepted' and driver_data.get(booking[0]) %}
+    {% set driver = driver_data[booking[0]] %}
+    <b>Name:</b> {{ driver[0] }}<br>
+    <b>Email:</b> {{ driver[1] }}<br>
+    <b>License:</b><br>
+    <img src="{{ url_for('static', filename=driver[2].split('static/')[-1]) }}" width="100"><br>
+    {% if driver[3] %}
+        <b>Vehicle:</b><br>
+        <img src="{{ url_for('static', filename=driver[3].split('static/')[-1]) }}" width="100">
+    {% endif %}
+{% elif booking[6] == 'accepted' %}
+    A driver has accepted your ride. (Details coming soon.)
+{% else %}
+    Not yet accepted
+{% endif %}
+</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        
+        {% else %}
+            <p>No bookings yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

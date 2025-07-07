@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register - Ride Connect</title>
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+    <script>
+        function toggleDriverFields() {
+            const role = document.getElementById("role").value;
+            const driverFields = document.getElementById("driver-fields");
+            const licensePhoto = document.getElementById("license_photo");
+
+            if (role === "driver") {
+                driverFields.style.display = "block";
+                licensePhoto.setAttribute("required", "required");
+            } else {
+                driverFields.style.display = "none";
+                licensePhoto.removeAttribute("required");
+                toggleVehiclePhoto(); // Hide vehicle field as well
+            }
+        }
+
+        function toggleVehiclePhoto() {
+            const hasVehicle = document.getElementById("has_vehicle").value;
+            const vehiclePhotoField = document.getElementById("vehicle-photo-field");
+            const vehiclePhoto = document.getElementById("vehicle_photo");
+
+            if (hasVehicle === "yes") {
+                vehiclePhotoField.style.display = "block";
+                vehiclePhoto.setAttribute("required", "required");
+            } else {
+                vehiclePhotoField.style.display = "none";
+                vehiclePhoto.removeAttribute("required");
+            }
+        }
+    </script>
+</head>
+<body onload="toggleDriverFields(); toggleVehiclePhoto();">
+    <h2>Register</h2>
+    <form action="/register" method="POST" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="role">Register as:</label>
+        <select name="role" id="role" onchange="toggleDriverFields()" required>
+            <option value="user">User</option>
+            <option value="driver">Driver</option>
+        </select>
+
+        <!-- Driver Fields -->
+        <div id="driver-fields" style="display: none;">
+            <label for="license_photo">Upload Driver License:</label>
+            <input type="file" id="license_photo" name="license_photo" accept="image/*">
+
+            <label for="has_vehicle">Do you have a personal vehicle?</label>
+            <select name="has_vehicle" id="has_vehicle" onchange="toggleVehiclePhoto()">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+
+            <div id="vehicle-photo-field" style="display: none;">
+                <label for="vehicle_photo">Upload Vehicle Photo:</label>
+                <input type="file" id="vehicle_photo" name="vehicle_photo" accept="image/*">
+            </div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+</body>
+</html>
