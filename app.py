@@ -13,9 +13,9 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-# Database connection
-conn = pymysql.connect(host="localhost", port=3307, user="root", password="", database="ride_connect")
-cursor = conn.cursor()
+# # Database connection
+# conn = pymysql.connect(host="localhost", port=3307, user="root", password="", database="ride_connect")
+# cursor = conn.cursor()
 
 # 🔷 Home Page
 @app.route("/")
