@@ -34,11 +34,8 @@ Tech Stack
 | Layer      | Technologies                          |
 | ---------- | ------------------------------------- |
 | Frontend   | HTML, CSS, JavaScript, Bootstrap      |
-| Backend    | Python (Flask / Django)               |
-| Database   | MySQL / PostgreSQL                    |
-| API & Maps | Google Maps API (for location & fare) |
-| UML Tools  | PlantUML, Draw\.io                    |
-
+| Backend    | Python (Flask)               |
+| Database   | MySQL                 |        
 ---
 
 Project Workflow
